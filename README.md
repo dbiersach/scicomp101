@@ -1,2 +1,1 @@
-# scicomp101
-Foundations of Scientific Computing
+# Foundations of Scientific Computing Using Python
