@@ -17,7 +17,7 @@ def run_trial():
 trials = 1_000_000
 straws = 0
 
-for _ in np.arange(trials):
+for _ in range(trials):
     straws += run_trial()
 
 print(straws / trials)
