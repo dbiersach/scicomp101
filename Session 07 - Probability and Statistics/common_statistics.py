@@ -24,7 +24,7 @@ def mode(s):
 
 
 a = [] # An empty list
-for _ in np.arange(30):
+for _ in range(30):
     a.append(np.random.randint(0, 100))
 
 print(f"{a=}")

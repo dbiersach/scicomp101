@@ -8,6 +8,8 @@ import numba
 def lattice_points(r):
     c = 0
     # Insert your code here
+    
+    
 
 
     # Do not edit the remaining code

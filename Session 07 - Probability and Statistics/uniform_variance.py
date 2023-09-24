@@ -27,5 +27,5 @@ print(f"{'Mean':>14}", end="")
 print(f"{'Variance':>16}", end="")
 print(f"{'Magic':>10}")
 
-for n in np.arange(1, 16):
+for n in range(1, 16):
     trial(n)
