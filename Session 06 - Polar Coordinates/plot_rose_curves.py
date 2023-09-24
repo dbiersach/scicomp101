@@ -6,6 +6,9 @@ import matplotlib.pyplot as plt
 # Insert your code here
 
 
+
+
+
 # Do not edit the remaining code
 plt.figure().add_subplot(projection="polar")
 plt.plot(t, r1)
