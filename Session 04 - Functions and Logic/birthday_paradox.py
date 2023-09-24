@@ -8,9 +8,9 @@ import numba
 @numba.njit
 def shared_birthdays(class_size):
     b = np.random.randint(0, 365, class_size)
-    for i in np.arange(b.size - 2):
-        for j in np.arange(i + 1, b.size):
-            if b.take(i) == b.take(j):
+    for i in range(b.size - 2):
+        for j in range(i + 1, b.size):
+            if b[i] == b[j]:
                 return True
     return False
 
@@ -18,9 +18,9 @@ def shared_birthdays(class_size):
 @numba.njit
 def calc_probabilities():
     p = np.zeros(max_size)
-    for c in np.arange(max_size):
+    for c in range(max_size):
         n = 0
-        for _ in np.arange(total_classes):
+        for _ in range(total_classes):
             if shared_birthdays(c):
                 n = n + 1
         p[c] = n / total_classes
@@ -39,8 +39,8 @@ x = np.linspace(0, 80, 500)
 y = 1.0 - np.exp(-(x**2) / 730)
 
 plt.figure()
-plt.step(
-    np.arange(max_size),
+plt.step(    
+    range(max_size),
     prob,
     color="black",
     linewidth=3,
