@@ -17,8 +17,8 @@ def shared_birthdays(class_size):
 
 @numba.njit
 def calc_probabilities():
-    p = np.zeros(max_size)
-    for c in range(max_size):
+    p = np.zeros(max_size + 1)
+    for c in range(2, max_size + 1):
         n = 0
         for _ in range(total_classes):
             if shared_birthdays(c):
@@ -39,8 +39,8 @@ x = np.linspace(0, 80, 500)
 y = 1.0 - np.exp(-(x**2) / 730)
 
 plt.figure()
-plt.step(    
-    range(max_size),
+plt.step(
+    range(max_size + 1),
     prob,
     color="black",
     linewidth=3,
