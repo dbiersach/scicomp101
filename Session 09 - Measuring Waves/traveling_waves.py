@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import FuncAnimation
 
-run_number = 6
+run_number = 1
 
 # Amplitude (amp), Wave Number (k), Angular Velocity (w)
 wave_params = (
