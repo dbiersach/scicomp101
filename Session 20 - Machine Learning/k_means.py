@@ -119,15 +119,14 @@ def reassign(pts, cs):
 
 
 def plot(pts, cs):
-    ax = plt.gca()
     for p in pts:
-        ax.scatter(p.x, p.y, color=p.cluster.color, alpha=0.5, edgecolor="black")
+        plt.scatter(p.x, p.y, color=p.cluster.color, alpha=0.5, edgecolor="black")
     for c in cs:
-        ax.scatter(c.x, c.y, color=c.color, marker=MarkerStyle("s"))
-    ax.set_title(f"k-Means Clustering (k={K_CLUSTERS})")
-    ax.set_xlim(-5, 45)
-    ax.set_ylim(-5, 45)
-    ax.set_aspect("equal")
+        plt.scatter(c.x, c.y, color=c.color, marker=MarkerStyle("s"))
+    plt.title(f"k-Means Clustering (k={K_CLUSTERS})")
+    plt.xlim(-5, 45)
+    plt.ylim(-5, 45)
+    plt.gca().set_aspect("equal")
 
 
 def on_key_press(event, pts, cs):
