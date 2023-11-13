@@ -18,14 +18,6 @@ a[0] = 0.5  # inital accel = 0.5 m/s^2
 
 # Insert your code here
 
-for i in range(ts - 1):
-    t[i + 1] = t[i] + dt
-    m[i + 1] = np.exp(-t[i + 1]) + 1
-    a[i + 1] = np.exp(-t[i + 1]) / 2
-    v[i + 1] = v[i] + m[i + 1] * a[i + 1] * dt
-    s[i + 1] = s[i] + v[i + 1] * dt
-
-print(f"s = {s[-1]:.4f} m")
 
 # Do not edit the remaining code
 plt.figure()

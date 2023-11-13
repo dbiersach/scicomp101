@@ -12,7 +12,7 @@ v0 = 45  # initial velocity (m/s)
 x = np.linspace(0, 600, 200)
 y = np.tan(t) * x - (g / (2 * v0**2 * np.cos(t) ** 2)) * x**2
 
-plt.figure()
+plt.figure("projectile_motion.py")
 plt.plot(x, y)
 plt.xlim(left=0)
 plt.ylim(bottom=0)
