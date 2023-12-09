@@ -25,7 +25,7 @@ facets[3] = (vertices[1], vertices[2], vertices[4])  # Right
 facets[4] = (vertices[2], vertices[3], vertices[4])  # Back
 
 p = Poly3DCollection(
-    facets, linewidth=3, edgecolors=["darkgoldenrod"], facecolors=["gold"]
+    facets, linewidth=3, edgecolors=["darkgoldenrod"], facecolors=["gold"]    
 )
 
 plt.figure("plot3d_pyramid.py")
@@ -36,7 +36,7 @@ ax.add_collection3d(p)
 ax.set_xlabel("x")
 ax.set_ylabel("y")
 ax.set_zlabel("z")
-ax.set_xlim3d(xmin=-10, xmax=200)
-ax.set_ylim3d(ymin=-10, ymax=200)
+ax.set_xlim3d(xmin=-25, xmax=225)
+ax.set_ylim3d(ymin=-25, ymax=225)
 ax.set_zlim3d(zmin=0, zmax=350)
 plt.show()
