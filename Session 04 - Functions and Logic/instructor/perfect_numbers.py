@@ -9,6 +9,10 @@ def is_perfect(n):
     return np.sum(factors) == n
 
 
-for n in range(2, 10_000):
-    if is_perfect(n):
-        print(n)
+def main():
+    for n in range(2, 10_000):
+        if is_perfect(n):
+            print(n)
+
+
+main()

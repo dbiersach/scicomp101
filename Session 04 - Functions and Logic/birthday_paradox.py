@@ -4,6 +4,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import numba
 
+total_classes = 10_000
+max_size = 80
+
 
 @numba.njit
 def shared_birthdays(class_size):
@@ -27,35 +30,34 @@ def calc_probabilities():
     return p
 
 
-print("This can take up to 30 seconds . . .")
+def main():
+    prob = calc_probabilities()
+    min_class_size = np.where(prob > 0.50)[0][0]
 
-total_classes = 10_000
-max_size = 80
+    x = np.linspace(0, 80, 500)
+    y = 1.0 - np.exp(-(x**2) / 730)
 
-prob = calc_probabilities()
-min_class_size = np.where(prob > 0.50)[0][0]
+    plt.figure("birthday_paradox.py")
+    plt.step(
+        range(max_size + 1),
+        prob,
+        color="black",
+        linewidth=3,
+        label="Estimated",
+    )
+    plt.plot(x, y, color="blue", label="Actual")
+    plt.legend()
+    plt.title(f"Birthday Paradox ({total_classes:,} classes)")
+    plt.xlabel("Class Size")
+    plt.ylabel("Probability")
+    plt.vlines(min_class_size, 0, prob[min_class_size], color="red")
+    plt.annotate(
+        f"Min Class Size = {min_class_size}",
+        xy=(min_class_size, prob[min_class_size]),
+        xytext=(28, 0.45),
+        arrowprops={"facecolor": "black"},
+    )
+    plt.show()
 
-x = np.linspace(0, 80, 500)
-y = 1.0 - np.exp(-(x**2) / 730)
 
-plt.figure()
-plt.step(
-    range(max_size + 1),
-    prob,
-    color="black",
-    linewidth=3,
-    label="Estimated",
-)
-plt.plot(x, y, color="blue", label="Actual")
-plt.legend()
-plt.title(f"Birthday Paradox ({total_classes:,} classes)")
-plt.xlabel("Class Size")
-plt.ylabel("Probability")
-plt.vlines(min_class_size, 0, prob[min_class_size], color="red")
-plt.annotate(
-    f"Min Class Size = {min_class_size}",
-    xy=(min_class_size, prob[min_class_size]),
-    xytext=(28, 0.45),
-    arrowprops={"facecolor": "black"},
-)
-plt.show()
+main()
