@@ -20,14 +20,20 @@ def median(s):
 def mode(s):
     c = collections.Counter(s)
     max_c = max(c.values())
-    return [k for k, v in c.items() if v == max_c]
+    if max_c == 1:
+        return None
+    else:
+        return [k for k, v in c.items() if v == max_c]
 
 
-a = [] # An empty list
-for _ in range(30):
-    a.append(np.random.randint(0, 100))
+def main():
+    rng = np.random.default_rng()
+    a = rng.integers(low=1, high=100, size=30, endpoint=True)
 
-print(f"{a=}")
-print(f"{mean(a)=}")
-print(f"{median(a)=}")
-print(f"{mode(a)=}")
+    print(f"a={a}")
+    print(f"{mean(a)=}")
+    print(f"{median(a)=}")
+    print(f"{mode(a)=}")
+
+
+main()

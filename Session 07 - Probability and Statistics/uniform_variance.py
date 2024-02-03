@@ -19,13 +19,17 @@ def trial(t):
     print(f"{magic:>10.3f}")
 
 
-print(f"{'Trial #':>8}", end="")
-print(f"{'Lower':>9}", end="")
-print(f"{'Upper':>9}", end="")
-print(f"{'Size':>9}", end="")
-print(f"{'Mean':>14}", end="")
-print(f"{'Variance':>16}", end="")
-print(f"{'Magic':>10}")
+def main():
+    print(f"{'Trial #':>8}", end="")
+    print(f"{'Lower':>9}", end="")
+    print(f"{'Upper':>9}", end="")
+    print(f"{'Size':>9}", end="")
+    print(f"{'Mean':>14}", end="")
+    print(f"{'Variance':>16}", end="")
+    print(f"{'Magic':>10}")
 
-for n in range(1, 16):
-    trial(n)
+    for t in range(1, 16):
+        trial(t)
+
+
+main()
