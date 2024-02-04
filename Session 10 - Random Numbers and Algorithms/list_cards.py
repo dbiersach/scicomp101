@@ -23,5 +23,9 @@ def print_deck(deck):
         print(f"The card in position {card_pos} is the {card_name}")
 
 
-deck = init_deck()
-print_deck(deck)
+def main():
+    deck = init_deck()
+    print_deck(deck)
+
+
+main()

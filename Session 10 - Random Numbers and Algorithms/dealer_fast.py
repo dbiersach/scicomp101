@@ -13,7 +13,7 @@ ranks = ["Deuce", "Three", "Four", "Five", "Six", "Seven",
 
 
 def init_deck():
-    deck = np.arange(52)    
+    deck = np.arange(52)
     for card_pos in range(52):
         new_card_pos = np.random.randint(52)
         swap_card = deck[card_pos]
@@ -31,15 +31,19 @@ def print_deck(deck):
         print(f"The card in position {card_pos} is the {card_name}")
 
 
-np.random.seed(2016)
-total_deals = 10_000
+def main():
+    np.random.seed(2016)
+    total_deals = 10_000
 
-start_time = time.process_time()
-for _ in range(total_deals):
-    deck = init_deck()
-elapsed_time = time.process_time() - start_time
+    start_time = time.process_time()
+    for _ in range(total_deals):
+        deck = init_deck()
+    elapsed_time = time.process_time() - start_time
 
-print_deck(deck)
+    print_deck(deck)
 
-print(f"Total deals: {total_deals:,}")
-print(f"Total run time (sec): {elapsed_time:.3f}\n")    
+    print(f"Total deals: {total_deals:,}")
+    print(f"Total run time (sec): {elapsed_time:.3f}\n")
+
+
+main()

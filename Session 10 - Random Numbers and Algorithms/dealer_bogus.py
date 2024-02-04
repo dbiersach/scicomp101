@@ -27,6 +27,10 @@ def print_deck(deck):
         print(f"The card in position {card_pos} is the {card_name}")
 
 
-np.random.seed(2016)
-deck = init_deck()
-print_deck(deck)
+def main():
+    np.random.seed(2016)
+    deck = init_deck()
+    print_deck(deck)
+
+
+main()
