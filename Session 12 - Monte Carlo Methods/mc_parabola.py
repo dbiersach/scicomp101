@@ -15,7 +15,16 @@ def halton(n, p):
     return h
 
 
+dots = 40_000
+
 # Insert your code here
+
+
+
+
+
+
+
 
 
 
@@ -26,7 +35,10 @@ print(f"act = {act:.6f}")
 print(f"est = {est:.6f}")
 print(f"err = {err:.5%}")
 
-plt.figure()
+plt.figure("mc_parabola.py")
 plt.scatter(x_in, y_in, color="red", marker=".", s=0.5)
 plt.scatter(x_out, y_out, color="blue", marker=".", s=0.5)
+plt.title("$y=-x^2+4$")
+plt.xlabel("x")
+plt.ylabel("y")
 plt.show()
