@@ -20,17 +20,21 @@ def decode_cf(form):
     return hn / kn
 
 
-print("Euler's Generalized Continued Fraction for Pi")
-act = math.pi
-est = decode_cf((3, 1, 4, 4, 1, 0, 6))
-err = abs((act - est) / act)
-print(f"Est : {est}")
-print(f"Act : {act}")
-print(f"Err : {err:.14%}\n")
+def main():
+    print("Euler's Generalized Continued Fraction for Pi")
+    act = math.pi
+    est = decode_cf((3, 1, 4, 4, 1, 0, 6))
+    err = abs((act - est) / act)
+    print(f"Est : {est}")
+    print(f"Act : {act}")
+    print(f"Err : {err:.14%}\n")
 
-print("Biersach's Generalized Continued Fraction for Pi")
-est = decode_cf((2, 8, 4, 8, 0, 4, 2))
-err = abs((act - est) / act)
-print(f"Est : {est}")
-print(f"Act : {act}")
-print(f"Err : {err:.14%}\n")
+    print("Biersach's Generalized Continued Fraction for Pi")
+    est = decode_cf((2, 8, 4, 8, 0, 4, 2))
+    err = abs((act - est) / act)
+    print(f"Est : {est}")
+    print(f"Act : {act}")
+    print(f"Err : {err:.14%}\n")
+
+
+main()
