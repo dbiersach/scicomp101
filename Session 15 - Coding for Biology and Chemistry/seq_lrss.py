@@ -54,4 +54,4 @@ def main(file_name):
         return
 
 
-main("fruitfly.txt")
+main("seq1.txt")
