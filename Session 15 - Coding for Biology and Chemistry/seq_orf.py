@@ -1,6 +1,7 @@
 # seq_orf.py
 
 import re
+from pathlib import Path
 
 AMINO_ACIDS = {
     ("Ala", "A"): ["GCT", "GCA", "GCC", "GCG"],  # Alanine
@@ -88,19 +89,19 @@ def get_orf(codon_string, offset):
         return None
 
     # Find possible indexes for all three STOP codons
-    stop_idexes = [
+    stop_indexes = [
         find_codon(codon_list, "TAA"),
         find_codon(codon_list, "TAG"),
         find_codon(codon_list, "TGA"),
     ]
 
     # Remove any STOP codon index that comes before the START index
-    stop_idexes[:] = [idx for idx in stop_idexes if idx > start_idx]
-    if len(stop_idexes) == 0:
+    stop_indexes[:] = [idx for idx in stop_indexes if idx > start_idx]
+    if len(stop_indexes) == 0:
         return None
 
-    # Use the index of the first occuring valid STOP codon
-    stop_idx = min(stop_idexes)
+    # Use the index of the first occurring valid STOP codon
+    stop_idx = min(stop_indexes)
 
     # An empty frame if STOP immediately follows START
     if stop_idx == start_idx + 1:
@@ -119,40 +120,38 @@ def get_orf(codon_string, offset):
 
 
 def main(file_name):
-    with open(file_name, "rb") as f_in:
-        print(f"Analyzing {file_name} . . .")
-
+    print(f"Analyzing {file_name} . . .")
+    file_path = Path(__file__).parent / file_name
+    with open(file_path, "rb") as f_in:
         # Read in text file into an array of file bytes
         f_bytes = bytearray(f_in.read())
 
-        # Enforce uppercase and remove non-letters, convert to UTF-8
-        seq = bytearray(f_bytes).decode().upper()
-        seq = re.compile("[^A-Z]").sub("", seq)
+    # Enforce uppercase and remove non-letters, convert to UTF-8
+    seq = bytearray(f_bytes).decode().upper()
+    seq = re.compile("[^A-Z]").sub("", seq)
 
-        # Print the original given sequence
-        print(f"Original sequence:  {seq} ")
+    # Print the original given sequence
+    print(f"Original sequence:  {seq} ")
 
-        # Build and print the reverse compliment of the given sequence
-        seq_rc = reverse_complement(seq)
-        print(f"Reverse complement: {seq_rc} ")
+    # Print any open reading frames in forward sequence
+    if s := get_orf(seq, 0):
+        print(f"Original sequence Open Frame +0: {s}")
+    if s := get_orf(seq, 1):
+        print(f"Original sequence  Frame +1: {s}")
+    if s := get_orf(seq, 2):
+        print(f"Original sequence  Frame +2: {s}")
 
-        # Print any open reading frames in forward sequence
-        if s := get_orf(seq, 0):
-            print(f"Open Frame +1: {s}")
-        if s := get_orf(seq, 1):
-            print(f"Open Frame +2: {s}")
-        if s := get_orf(seq, 2):
-            print(f"Open Frame +3: {s}")
+    # Build and print the reverse compliment of the given sequence
+    seq_rc = reverse_complement(seq)
+    print(f"Reverse complement: {seq_rc} ")
 
-        # Print any open reading frames in reverse compliment of sequence
-        if s := get_orf(seq_rc, 0):
-            print(f"Open Frame -1: {s}")
-        if s := get_orf(seq_rc, 1):
-            print(f"Open Frame -2: {s}")
-        if s := get_orf(seq_rc, 2):
-            print(f"Open Frame -3: {s}")
-
-        return
+    # Print any open reading frames in reverse compliment of sequence
+    if s := get_orf(seq_rc, 0):
+        print(f"Reverse complement Open Frame +0: {s}")
+    if s := get_orf(seq_rc, 1):
+        print(f"Reverse complement Open Frame +1: {s}")
+    if s := get_orf(seq_rc, 2):
+        print(f"Reverse complement Open Frame +2: {s}")
 
 
 main("seq2.txt")

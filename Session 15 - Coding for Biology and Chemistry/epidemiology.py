@@ -1,14 +1,16 @@
 # epidemiology.py
 
-import numpy as np
+from pathlib import Path
+
 import matplotlib.pyplot as plt
+import numpy as np
 
 # Set simulation duration
 tf = 10  # time final (simulate 10 months of the disease)
-ts = 100  # time steps (tally compartments ~twice a week)
+ts = 1000  # time steps (tally compartments ~twice a week)
 dt = tf / ts  # delta t
 
-# Intialize arrays
+# Initialize arrays
 t = np.zeros(ts)  # Time stamps
 s = np.zeros(ts)  # Number of susceptible people
 i = np.zeros(ts)  # Number of infected people
@@ -16,7 +18,7 @@ r = np.zeros(ts)  # Number of recovered people
 
 # Set initial conditions
 s[0] = 1000  # Initial tally of susceptible people
-i[0] = 1  # Intial tally of infected people
+i[0] = 1  # Initial tally of infected people
 beta = 0.003  # Infection rate
 delta = 1  # Recovery rate
 
@@ -28,11 +30,12 @@ for n in range(ts - 1):
     r[n + 1] = r[n] + (delta * i[n]) * dt
 
 # Plot S-I-R compartment populations over time
+plt.figure(Path(__file__).name)
 plt.plot(t, s, linewidth=2, label="Susceptible")
 plt.plot(t, i, linewidth=2, label="Infected")
 plt.plot(t, r, linewidth=2, label="Recovered")
 plt.title("Epidemiology (Kermack-McKendrick)")
 plt.xlabel("Time (months)")
 plt.ylabel("Population")
-plt.legend()
+plt.legend(loc="right")
 plt.show()

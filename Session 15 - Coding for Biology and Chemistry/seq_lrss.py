@@ -1,6 +1,7 @@
 # seq_lrss.py
 
 import re
+from pathlib import Path
 
 
 def match(s1, s2):
@@ -37,21 +38,19 @@ def lrss(seq):
 
 
 def main(file_name):
-    with open(file_name, "rb") as f_in:
-        print(f"Analyzing {file_name} . . .")
-
+    print(f"Analyzing {file_name} . . .")
+    file_path = Path(__file__).parent / file_name
+    with open(file_path, "rb") as f_in:
         # Read in text file into an array of file bytes
         f_bytes = bytearray(f_in.read())
 
-        # Enforce uppercase and remove non-letters, convert to UTF-8
-        seq = bytearray(f_bytes).decode().upper()
-        seq = re.compile("[^A-Z]").sub("", seq)
+    # Enforce uppercase and remove non-letters, convert to UTF-8
+    seq = bytearray(f_bytes).decode().upper()
+    seq = re.compile("[^A-Z]").sub("", seq)
 
-        # Find and print the longest repeated sub-string (lrss)
-        longest = lrss(seq)
-        print(f"Longest repeated substring: {longest} ")
-
-        return
+    # Find and print the longest repeated sub-string (lrss)
+    longest = lrss(seq)
+    print(f"Longest repeated substring: {longest} ")
 
 
 main("seq1.txt")
