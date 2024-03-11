@@ -1,7 +1,9 @@
 # nonlinear_ode.py
 
-import numpy as np
+from pathlib import Path
+
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def dy(x, y):
@@ -10,16 +12,18 @@ def dy(x, y):
 
 def main():
     xf = 12 * np.pi  # final x value
-    xs = 1000  # total steps across x-axis
-    dx = xf / xs  # step size across x-axis
+    xs = 1000  # total steps across x-axis from origin
+    dx = xf / xs  # step size across x-axis from origin
 
     x = np.zeros(xs)
     y1 = np.zeros(xs)
     y2 = np.zeros(xs)
 
+    # Initial condition
     y1[0] = 1
     y2[0] = 1
 
+    # Numerically estimate ODE using Euler and RK4 Methods
     for i in range(xs - 1):
         x[i + 1] = x[i] + dx
 
@@ -33,13 +37,18 @@ def main():
         k4 = dy(x[i], y2[i] + k3 * dx)
         y2[i + 1] = y2[i] + (k1 + 2 * k2 + 2 * k3 + k4) / 6 * dx
 
-    plt.figure("nonlinear_ode.py")
-    plt.plot(x, y1, label="Euler")
-    plt.plot(x, y2, label="RK4")
-    plt.title("Nonlinear ODE")
+    plt.figure(Path(__file__).name)
+    plt.plot(x, y1, lw=2, label="Euler")
+    plt.plot(x, y2, lw=2, label="RK4")
+    # fmt: off
+    plt.title(
+        r"$\frac{dy}{dx} = y\cdot\cos(x),\; y(0)=1"
+        r"\quad\rightarrow\quad y=e^{\sin(x)}$"
+    )
+    # fmt: on
     plt.xlabel("x")
     plt.ylabel("y")
-    plt.legend()
+    plt.legend(loc="upper right")
     plt.show()
 
 
