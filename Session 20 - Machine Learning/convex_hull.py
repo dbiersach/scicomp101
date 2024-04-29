@@ -1,5 +1,7 @@
 # convex_hull.py
 
+from pathlib import Path
+
 import matplotlib.pyplot as plt
 
 
@@ -12,7 +14,7 @@ def orientation(p, q, r):
     bx = r[0] - q[0]
     by = r[1] - q[1]
 
-    # Calculate dot product between A and B
+    # Calculate cross product between A and B
     val = (ax * by) - (ay * bx)
 
     if val == 0:
@@ -58,34 +60,39 @@ def convex_hull(points):
     return hull
 
 
-# Declare 2D Caretesian points as a list of tuples
-# fmt: off
-points = [(1.5, 3), (2, 3), (2.5, 1.5),
-          (2.5, 2.5), (2, 2), (3, 1),
-          (1.5, 2.5), (1.5, 1.5), (1, 3.5)]
-# fmt: on
+def main():
+    # Declare 2D Cartesian points as a list of tuples
+    # fmt: off
+    points = [(1.5, 3), (2, 3), (2.5, 1.5),
+            (2.5, 2.5), (2, 2), (3, 1),
+            (1.5, 2.5), (1.5, 1.5), (1, 3.5)]
+    # fmt: on
 
-# Calculate list of coordinates of the convex hull
-hull = convex_hull(points)
+    # Calculate list of coordinates of the convex hull
+    # using the Jarvis March algorithm
+    hull = convex_hull(points)
 
-# Split the points into seperate lists of the x and y coordinates
-h_x, h_y = zip(*hull)
+    # Split the points into separate lists of the x and y coordinates
+    h_x, h_y = zip(*hull)
 
-# Close the hull by connecting back to the first point
-h_x = list(h_x) + [h_x[0]]
-h_y = list(h_y) + [h_y[0]]
+    # Close the hull by connecting back to the first point
+    h_x = list(h_x) + [h_x[0]]
+    h_y = list(h_y) + [h_y[0]]
 
-# Split the points into seperate lists of the x and y coordinates
-pt_x, pt_y = zip(*points)
+    # Split the points into separate lists of the x and y coordinates
+    pt_x, pt_y = zip(*points)
 
-# Plot the points and the convex hull
-plt.figure("convex_hull.py")
-plt.scatter(pt_x, pt_y, color="blue", zorder=2)
-plt.plot(h_x, h_y, color="red")
-plt.title("Convex Hull (Jarvis March)")
-plt.xlabel("X")
-plt.ylabel("Y")
-plt.xlim(0, 4)
-plt.ylim(0, 4)
-plt.grid()
-plt.show()
+    # Plot the points and the convex hull
+    plt.figure(Path(__file__).name)
+    plt.scatter(pt_x, pt_y, color="blue", zorder=2)
+    plt.plot(h_x, h_y, color="red")
+    plt.title("Convex Hull (Jarvis March)")
+    plt.xlabel("X")
+    plt.ylabel("Y")
+    plt.xlim(0, 4)
+    plt.ylim(0, 4)
+    plt.grid(True)
+    plt.show()
+
+
+main()
