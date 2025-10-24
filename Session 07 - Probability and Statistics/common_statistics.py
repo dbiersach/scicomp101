@@ -31,9 +31,9 @@ def main():
     a = rng.integers(low=1, high=100, size=30, endpoint=True)
 
     print(f"a={a}")
-    print(f"{mean(a)=}")
-    print(f"{median(a)=}")
-    print(f"{mode(a)=}")
+    print(f"mean(a) = {mean(a)}")
+    print(f"median(a) = {median(a)}")
+    print(f"mode(a) = {mode(a.tolist())}")
 
 
 main()
