@@ -1,9 +1,10 @@
-# plot3d_surface.py
+#!/usr/bin/env python3
+"""plot3d_surface.py"""
 
-import numpy as np
+from pathlib import Path
+
 import matplotlib.pyplot as plt
-from matplotlib import cm
-from matplotlib.ticker import LinearLocator
+import numpy as np
 
 
 def f(x, y):
@@ -13,23 +14,21 @@ def f(x, y):
 def main():
     x = np.linspace(-5, 5, 100)
     y = np.linspace(-5, 5, 100)
-
     x, y = np.meshgrid(x, y)
     z = f(x, y)
 
-    plt.figure("plot3d_surface.py", constrained_layout=True)
-    plt.axes(projection="3d")
-    plt.gcf().set_size_inches(10, 8)
+    plt.figure(Path(__file__).name)
+    ax = plt.axes(projection="3d")
 
-    surf = plt.gca().plot_surface(
-        x, y, z, cmap=cm.coolwarm, linewidth=0, antialiased=False
-    )
-    plt.colorbar(surf, ax=plt.gca(), shrink=0.5, aspect=5)
+    surf = ax.plot_surface(x, y, z, cmap="coolwarm", lw=0, antialiased=False)
+    plt.colorbar(surf, ax=ax, shrink=0.5)
 
-    plt.gca().zaxis.set_major_locator(LinearLocator(10))
-    plt.gca().zaxis.set_major_formatter("{x:.02f}")
-
+    ax.zaxis.set_major_formatter("{x:.02f}")
+    ax.set_xlabel("x")
+    ax.set_ylabel("y")
+    ax.set_zlabel("z")
     plt.show()
 
 
-main()
+if __name__ == "__main__":
+    main()

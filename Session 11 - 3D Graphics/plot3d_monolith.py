@@ -1,8 +1,10 @@
-# plot3d_monolith.py
+#!/usr/bin/env python3
+"""plot3d_monolith.py"""
+
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
-
 
 length = 40  # X direction
 width = 10  # Y direction
@@ -29,20 +31,14 @@ facets[5] = (vertices[2], vertices[3], vertices[7], vertices[6])  # Back
 
 p = Poly3DCollection(facets, linewidth=3, edgecolors=["Blue"], facecolors=["None"])
 
-plt.figure("plot3d_monolith.py")
-
+plt.figure(Path(__file__).name)
 ax = plt.axes(projection="3d")
 ax.view_init(azim=-45)
-ax.figure.set_size_inches(10, 8)
-
 ax.add_collection3d(p)
-
 ax.set_xlabel("x")
 ax.set_ylabel("y")
 ax.set_zlabel("z")
-
 ax.set_xlim3d(xmin=-100, xmax=100)
 ax.set_ylim3d(ymin=-100, ymax=100)
 ax.set_zlim3d(zmin=0, zmax=100)
-
 plt.show()
