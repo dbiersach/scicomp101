@@ -1,0 +1,58 @@
+[project]
+name = "scicomp101"
+version = "0.1.0"
+description = "Foundations of Scientific Computing (scicomp101)"
+readme = "README.md"
+requires-python = "==3.13.9"
+dependencies = [
+    "apptools>=5.3.1",
+    "beautifulsoup4>=4.14.2",
+    "black>=25.9.0",
+    "configobj>=5.0.9",
+    "ipython>=9.6.0",
+    "matplotlib>=3.10.7",
+    "mayavi==4.8.3",
+    "networkx>=3.5",
+    "numba>=0.62.1",
+    "numexpr>=2.14.1",
+    "numpy>=2.3.4",
+    "pandas>=2.3.3",
+    "pip>=25.2",
+    "pulp>=3.3.0",
+    "pyface>=8.0.0",
+    "pygame>=2.6.1",
+    "pyqt6>=6.9.1",
+    "pyside6>=6.10.0",
+    "pyside6-addons>=6.10.0",
+    "ruff>=0.14.0",
+    "scikit-learn>=1.7.2",
+    "scipy>=1.16.2",
+    "selenium>=4.36.0",
+    "setuptools>=80.9.0",
+    "sympy>=1.14.0",
+    "tqdm>=4.67.1",
+    "traitsui>=8.0.0",
+    "vtk==9.4.2",
+    "webdriver-manager>=4.0.2",
+    "wheel>=0.45.1",
+]
+
+[tool.uv]
+no-build-isolation-package = ["mayavi"]
+
+[[tool.uv.dependency-metadata]]
+name = "mayavi"
+version = "4.8.3"
+requires-dist = ["numpy"]
+
+[tool.uv.workspace]
+members = [
+    "scicomp101",
+]
+
+[tool.ruff]
+lint.extend-select = ["I", "C4", "ISC", "SIM", "TCH"]
+lint.ignore = []
+show-fixes = true
+target-version = "py313"
+
