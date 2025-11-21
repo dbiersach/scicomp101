@@ -21,6 +21,11 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/c4/7c/56fcf5f5a81f44cf2caac26b4f4b0b3b89e9d9da5992a5b5fe90ed427c13/apptools-5.3.1-py3-none-any.whl", hash = "sha256:964f594627e634dc673326eb59adfacedb7749a6a3279045b5b949cf4a6d1e4a", size = 230085, upload-time = "2025-05-13T13:50:26.011Z" },
 ]
 
+[package.optional-dependencies]
+preferences = [
+    { name = "configobj" },
+]
+
 [[package]]
 name = "asttokens"
 version = "3.0.0"
@@ -200,6 +205,22 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/43/fa/6d96a0978d19e17b68d634497769987b16c8f4cd0a7a05048bec693caa6b/decorator-5.2.1.tar.gz", hash = "sha256:65f266143752f734b0a7cc83c46f4618af75b8c5911b00ccb61d0ac9b6da0360", size = 56711, upload-time = "2025-02-24T04:41:34.073Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/4e/8c/f3147f5c4b73e7550fe5f9352eaa956ae838d5c51eb58e7a25b9f3e2643b/decorator-5.2.1-py3-none-any.whl", hash = "sha256:d316bb415a2d9e2d2b3abcc4084c6502fc09240e292cd76a76afc106a1c8e04a", size = 9190, upload-time = "2025-02-24T04:41:32.565Z" },
+]
+
+[[package]]
+name = "envisage"
+version = "7.0.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "apptools", extra = ["preferences"] },
+    { name = "pyface" },
+    { name = "setuptools" },
+    { name = "traits" },
+    { name = "traitsui" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/41/08/868155cd6d939c766c70deae697649f0ee890d25c69d42c1a628efd95c53/envisage-7.0.4.tar.gz", hash = "sha256:d6bb2938bbb45c4ef1766c55ed6f6c1c72b6fce70468ac9f5b0efcd1ef8c1d97", size = 168828, upload-time = "2025-04-25T14:54:38.885Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ec/65/4f8d174cd217193c60aa2f933cd65575cc94116f8cd40cbd3991c2aae854/envisage-7.0.4-py3-none-any.whl", hash = "sha256:dad6658105cdd4483f7d72ec3c0bea0cf703e65adddaf3f112543e32eff34f53", size = 270025, upload-time = "2025-04-25T14:54:37.653Z" },
 ]
 
 [[package]]
@@ -670,6 +691,15 @@ wheels = [
 ]
 
 [[package]]
+name = "puremagic"
+version = "1.30"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/dd/7f/9998706bc516bdd664ccf929a1da6c6e5ee06e48f723ce45aae7cf3ff36e/puremagic-1.30.tar.gz", hash = "sha256:f9ff7ac157d54e9cf3bff1addfd97233548e75e685282d84ae11e7ffee1614c9", size = 314785, upload-time = "2025-07-04T18:48:36.061Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/91/ed/1e347d85d05b37a8b9a039ca832e5747e1e5248d0bd66042783ef48b4a37/puremagic-1.30-py3-none-any.whl", hash = "sha256:5eeeb2dd86f335b9cfe8e205346612197af3500c6872dffebf26929f56e9d3c1", size = 43304, upload-time = "2025-07-04T18:48:34.801Z" },
+]
+
+[[package]]
 name = "pycparser"
 version = "2.23"
 source = { registry = "https://pypi.org/simple" }
@@ -913,6 +943,7 @@ dependencies = [
     { name = "beautifulsoup4" },
     { name = "black" },
     { name = "configobj" },
+    { name = "envisage" },
     { name = "ipython" },
     { name = "matplotlib" },
     { name = "mayavi" },
@@ -923,6 +954,7 @@ dependencies = [
     { name = "pandas" },
     { name = "pip" },
     { name = "pulp" },
+    { name = "puremagic" },
     { name = "pyface" },
     { name = "pygame" },
     { name = "pyqt6" },
@@ -947,6 +979,7 @@ requires-dist = [
     { name = "beautifulsoup4", specifier = ">=4.14.2" },
     { name = "black", specifier = ">=25.9.0" },
     { name = "configobj", specifier = ">=5.0.9" },
+    { name = "envisage", specifier = ">=7.0.4" },
     { name = "ipython", specifier = ">=9.6.0" },
     { name = "matplotlib", specifier = ">=3.10.7" },
     { name = "mayavi", specifier = "==4.8.3" },
@@ -957,6 +990,7 @@ requires-dist = [
     { name = "pandas", specifier = ">=2.3.3" },
     { name = "pip", specifier = ">=25.2" },
     { name = "pulp", specifier = ">=3.3.0" },
+    { name = "puremagic", specifier = ">=1.30" },
     { name = "pyface", specifier = ">=8.0.0" },
     { name = "pygame", specifier = ">=2.6.1" },
     { name = "pyqt6", specifier = ">=6.9.1" },
