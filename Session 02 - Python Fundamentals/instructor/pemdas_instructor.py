@@ -23,3 +23,7 @@ print(z)
 
 print(f"{z = }")
 print(f"{z = :.4}")
+
+print()
+print(1900 / 77)
+print(1900 // 77)
