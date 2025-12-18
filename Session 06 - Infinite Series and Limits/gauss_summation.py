@@ -1,1 +1,0 @@
-# gauss_summation.py
