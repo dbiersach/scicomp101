@@ -1,4 +1,4 @@
-#!/usr/bin/env uv run
+#!/usr/bin/env -S uv run
 """
 Count integers whose binary representation contains exactly two adjacent 1 bits.
 
