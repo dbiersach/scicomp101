@@ -50,7 +50,7 @@ def count_integers_with_two_adjacent_one_bits(min_n: int, max_n: int) -> int:
 
 def main() -> None:
     """Run example ranges and display results."""
-    for lo, hi in [(1, 192), (10**25, 10**45)]:
+    for lo, hi in [(1, 255), (10**25, 10**45)]:
         count = count_integers_with_two_adjacent_one_bits(lo, hi)
         print(
             "Count of integers with two adjacent 1 bits between "
