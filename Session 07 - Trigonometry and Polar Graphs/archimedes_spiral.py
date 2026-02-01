@@ -1,37 +1,43 @@
 #!/usr/bin/env -S uv run
-"""plot_rose_curves.py"""
+"""archimedes_spiral.py"""
 
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.integrate import quad
 
+# Sample points
+n_points = 100_000
 
-def r1(theta):
-    return 4 + 4 * np.cos(4 * theta)
+# Polar to Cartesian conversion for Archimedes Spiral
+theta = np.linspace(0, 8 * np.pi, n_points)
+x = theta * np.cos(theta)
+y = theta * np.sin(theta)
 
+# Perimeter (accumulate Cartesian distances)
+dx = np.diff(x)
+dy = np.diff(y)
+perimeter_est = np.sum(np.hypot(dx, dy))
 
-def r2(theta):
-    return 3 + 3 * np.cos(4 * theta + np.pi)
+# Arc Length (integral)
+arc_length = quad(lambda theta: np.sqrt(theta**2 + 1), 0, 8 * np.pi)[0]
 
+print("Archimedes Spiral")
+print(f"Number of points: {n_points:,}\n")
+print("Estimated perimeter / arc length:")
+print(f"Cartesian approximation: {perimeter_est:,.8f}")
+print(f"Integral approximation : {arc_length:,.8f}\n")
 
-def r3(theta):
-    return 5 + 5 * np.cos(3 / 2 * theta)
-
-
-def plot(ax):
-    theta = np.linspace(0, 4 * np.pi, 1000)
-    ax.plot(theta, r1(theta), label=r"$4+4\cos{4\theta}$")
-    # ax.plot(theta, r2(theta), label=r"$3+3\cos{(4\theta+\pi)}$")
-    # ax.plot(theta, r3(theta), label=r"$5+5\cos{(\dfrac{3}{2}\theta)}$")
-    ax.legend(loc="upper right")
-
-
-def main():
-    plt.figure(Path(__file__).name)
-    plot(plt.axes(projection="polar"))
-    plt.show()
-
-
-if __name__ == "__main__":
-    main()
+# Plot using Polar coordinates
+plt.figure(Path(__file__).name)
+plt.subplot(projection="polar")
+plt.plot(theta, theta, lw=3)
+plt.title(
+    r"Archimedes Spiral $\left(r=\theta,\;0\leq\theta\leq 8\pi\right)$"
+    f"\nArc Length = {arc_length:.8f}"
+)
+plt.gca().set_aspect("equal")
+plt.grid(True)
+plt.tight_layout()
+plt.show()

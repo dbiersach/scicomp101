@@ -1,5 +1,5 @@
 #!/usr/bin/env -S uv run
-"""basel_problem.py"""
+"""basel_series_instructor.py"""
 
 from pathlib import Path
 
