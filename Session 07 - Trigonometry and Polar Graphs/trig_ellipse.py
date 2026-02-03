@@ -15,11 +15,11 @@ theta = np.linspace(0, 2 * np.pi, n_points)
 x = a * np.cos(theta)
 y = b * np.sin(theta)
 
-# ---- Area (shoelace formula) ----
+# Area (shoelace formula)
 shoelace_sum = np.sum(x[:-1] * y[1:] - x[1:] * y[:-1])
 area_est = abs(shoelace_sum) / 2
 
-# ---- Perimeter (accumulate Cartesian distances) ----
+# Perimeter (accumulate Cartesian distances)
 dx = np.diff(x)
 dy = np.diff(y)
 perimeter_est = np.sum(np.hypot(dx, dy))
@@ -37,8 +37,7 @@ print(
     " (Ramanujan's formula)"
 )
 
-
-# Plot
+# Plot the ellipse
 plt.figure(Path(__file__).name)
 plt.plot(x, y)
 plt.axhline(0, color="black")

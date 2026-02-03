@@ -1,5 +1,5 @@
 #!/usr/bin/env -S uv run
-"""olympic_rings.py"""
+"""olympic_rings_instructor.py"""
 
 from pathlib import Path
 
@@ -11,8 +11,8 @@ theta = np.linspace(0, 2 * np.pi, 1000)
 x = radius * np.cos(theta)
 y = radius * np.sin(theta)
 
-x_offset = 0
-y_offset = 0
+x_offset = 5 / 2 * radius
+y_offset = radius
 
 plt.figure(Path(__file__).name)
 plt.plot(x, y, color="black", linewidth=12)
