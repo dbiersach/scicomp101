@@ -30,7 +30,7 @@ print()
 print(f"Estimated area: {area_est:,.8f}")
 print(f"Pi from estimated area: {area_est / (a * b):,.8f}")
 print()
-print(f"Estimated perimeter: {perimeter_est:,.8f}")
+print(f"Estimated perimeter: {perimeter_est:,.8f} (Cartesian distance sum)")
 print(
     "Estimated perimeter: "
     f"{np.pi * (3 * (a + b) - np.sqrt((3 * a + b) * (a + 3 * b))):,.8f}"
