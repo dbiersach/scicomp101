@@ -24,6 +24,7 @@ dependencies = [
     "pyface>=8.0.0",
     "pygame>=2.6.1",
     "pyqt6>=6.9.1",
+    "pyserial>=3.5",
     "pyside6>=6.10.0",
     "pyside6-addons>=6.10.0",
     "ruff>=0.14.0",
