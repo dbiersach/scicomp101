@@ -1,5 +1,5 @@
 #!/usr/bin/env -S uv run
-"""basel_series.py"""
+"""basel_problem_instructor.py"""
 
 from pathlib import Path
 
@@ -7,10 +7,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Update the following code
-n = 1
-x = np.zeros(1)
-y1 = np.zeros(1)
-y2 = np.zeros(1)
+n = 100_000
+x = np.linspace(1, n, n)
+y1 = np.cumsum(1 / x)
+y2 = np.cumsum(1 / x**2)
 
 # Calculate magic number
 print(np.sqrt(6 * y2[-1]))
