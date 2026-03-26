@@ -8,9 +8,10 @@ import numpy as np
 
 
 def fit_linear(x, y):
-    m = len(x) * np.sum(x * y) - np.sum(x) * np.sum(y)
-    m = m / (len(x) * np.sum(x**2) - np.sum(x) ** 2)
-    b = (np.sum(y) - m * np.sum(x)) / len(x)
+    n = len(x)
+    m = n * np.sum(x * y) - np.sum(x) * np.sum(y)
+    m /= n * np.sum(x**2) - np.sum(x) ** 2
+    b = (np.sum(y) - m * np.sum(x)) / n
     return m, b
 
 
