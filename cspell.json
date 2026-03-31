@@ -82,6 +82,7 @@
         "colmap",
         "colorbar",
         "colormap",
+        "colormaps",
         "CONDA",
         "configobj",
         "contourf",
