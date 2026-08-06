@@ -3,58 +3,67 @@ name = "scicomp101"
 version = "0.1.0"
 description = "Foundations of Scientific Computing (scicomp101)"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = "==3.14.*"
 dependencies = [
-    "apptools",
-    "beautifulsoup4",
-    "black",
-    "configobj",
-    "datasets",
-	"envisage",	
-    "ipympl",
-    "ipython",
-    "jax[cpu]",
-    "joblib",
-    "jupyter",
-    "matplotlib",
-    "networkx",
-    "numba",
-    "numexpr",
-    "numpy",
-    "pandas",
-    "pip",
-    "pulp",
-	"puremagic",
-    "pyface",
-    "pygame-ce",
-    "pyqt6",
-    "pyside6",
-    "pyside6-addons",
-    "ruff",
-    "scikit-learn",
-    "scipy",
-    "seaborn",
-    "selenium",
-    "setuptools",
-    "sympy",
-    "tqdm",
-    "traitsui",
-    "transformers",
-    "webdriver-manager",
-    "wheel",
-    "highspy",
-    "pyvista[all]",
+    "apptools>=5.3.1",
+    "beautifulsoup4>=4.15.0",
+    "configobj>=5.0.9",
+    "datasets>=5.0.1",
+    "envisage>=7.0.4",
+    "highspy>=1.15.1",
+    # Pin to the stable 6.x line: ipykernel 7's subshell/control-channel
+    # rewrite drops execute_reply/idle messages on Windows, leaving VS Code
+    # cells stuck spinning even though the kernel finished (vscode-jupyter #17228).
+    "ipykernel>=6.31.0,<7",
+    "ipympl>=0.10.0",
+    "ipython>=9.16.1",
+    "jax[cpu]>=0.11.0",
+    "joblib>=1.5.3",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.11.1",
+    "networkx>=3.6.1",
+    "numba>=0.66.0",
+    "numexpr>=2.14.2",
+    "numpy>=2.4.6",
+    "pandas>=3.0.5",
+    "pip>=26.2.1",
+    "pulp>=3.3.2",
+    "puremagic>=2.2.0",
+    "pyface>=8.0.0",
+    # pygame-ce, not pygame: upstream pygame ships no Python 3.14 wheel, and
+    # building it from source fails on Windows. pygame-ce is the community
+    # fork and a drop-in replacement - it still imports as "pygame".
+    "pygame-ce>=2.5.7",
+    "pyqt6>=6.11.0",
+    "pyside6>=6.11.1",
+    "pyside6-addons>=6.11.1",
+    "pyvista[all]>=0.48.4",
+    "ruff>=0.16.1",
+    "scikit-learn>=1.9.0",
+    "scipy>=1.18.0",
+    "seaborn>=0.13.2",
+    "selenium>=4.46.0",
+    "setuptools>=83.0.0",
+    "sympy>=1.14.0",
+    "tqdm>=4.70.0",
+    "traitsui>=8.0.0",
+    "transformers>=5.14.1",
+    "webdriver-manager>=4.1.2",
+    "wheel>=0.47.0",
 ]
 
-
-[tool.uv.workspace]
-members = [
-    "scicomp101",
+[tool.uv]
+# Resolve for all three target platforms so uv.lock works for students on
+# Windows, macOS, and Linux - not just the machine that last ran 'uv sync'.
+required-environments = [
+    "sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "sys_platform == 'darwin' and platform_machine == 'arm64'",
+    "sys_platform == 'win32' and platform_machine == 'AMD64'",
 ]
 
 [tool.ruff]
+extend-include = ["*.ipynb"]
 lint.extend-select = ["I", "C4", "ISC", "SIM", "TCH"]
 lint.ignore = []
 show-fixes = true
 target-version = "py314"
-
