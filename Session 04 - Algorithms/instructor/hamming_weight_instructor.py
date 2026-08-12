@@ -1,4 +1,5 @@
-# hamming_weight_instructor.py
+#!/usr/bin/env -S uv run
+"""hamming_weight_instructor.py"""
 
 n = 95601
 

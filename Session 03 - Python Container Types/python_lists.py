@@ -1,4 +1,5 @@
-# python_lists.py
+#!/usr/bin/env -S uv run
+"""python_lists.py"""
 
 # C = Create and R = Read
 print("Part #1 - Create a List and Read Items")

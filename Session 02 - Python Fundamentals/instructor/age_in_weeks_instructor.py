@@ -1,4 +1,5 @@
-# age_in_weeks_instructor.py
+#!/usr/bin/env -S uv run
+"""age_in_weeks_instructor.py"""
 
 age_years = 58
 age_weeks = age_years * 52

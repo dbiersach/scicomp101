@@ -1,4 +1,5 @@
-# age_in_seconds.py
+#!/usr/bin/env -S uv run
+"""age_in_seconds.py"""
 
 age_years = 0
 age_seconds = 0

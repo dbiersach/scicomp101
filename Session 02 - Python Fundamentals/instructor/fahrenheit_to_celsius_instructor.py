@@ -1,4 +1,5 @@
-# fahrenheit_to_celsius_instructor.py
+#!/usr/bin/env -S uv run
+"""fahrenheit_to_celsius_instructor.py"""
 
 for fahrenheit in range(-44, 217, 4):
     celsius = (fahrenheit - 32) * 5 / 9

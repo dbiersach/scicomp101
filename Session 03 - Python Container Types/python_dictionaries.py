@@ -1,4 +1,5 @@
-# python_dictionaries.py
+#!/usr/bin/env -S uv run
+"""python_dictionaries.py"""
 
 from pprint import pprint
 

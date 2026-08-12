@@ -1,4 +1,5 @@
-# sum_multiples.py
+#!/usr/bin/env -S uv run
+"""sum_multiples.py"""
 
 max = 1900
 sum = 0

@@ -1,1 +1,2 @@
-# my_quip.py
+#!/usr/bin/env -S uv run
+"""my_quip.py"""

@@ -1,4 +1,5 @@
-# python_tuples_instructor.py
+#!/usr/bin/env -S uv run
+"""python_tuples_instructor.py"""
 
 # C = Create and R = Read
 print("Part #1 - Create a List and Tuple and Read Items")

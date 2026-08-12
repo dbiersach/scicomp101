@@ -1,4 +1,5 @@
-# pemdas_instructor.py
+#!/usr/bin/env -S uv run
+"""pemdas_instructor.py"""
 
 print(7 + 2 / 3)
 print((7 + 2) / 3)

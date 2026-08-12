@@ -1,4 +1,5 @@
-# reverse_string_instructor.py
+#!/usr/bin/env -S uv run
+"""reverse_string_instructor.py"""
 
 s1 = "Forever Young"
 print(s1)
