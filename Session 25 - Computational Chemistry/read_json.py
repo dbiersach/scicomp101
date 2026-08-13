@@ -5,7 +5,8 @@ import json
 from pathlib import Path
 
 file_name = "uranium_isotopes.json"
-with Path.open(file_name, "rb") as f_in:
+file_path = Path(__file__).parent / file_name
+with file_path.open("rb") as f_in:
     uranium_isotopes = json.load(f_in)
 
 # Compare half-lives of all isotopes

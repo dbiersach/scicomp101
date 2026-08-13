@@ -38,7 +38,8 @@ uranium_isotopes = {
 }
 
 file_name = "uranium_isotopes.json"
-with Path.open(file_name, "w", encoding="ascii") as file_out:
+file_path = Path(__file__).parent / file_name
+with file_path.open("w", encoding="ascii") as file_out:
     json.dump(uranium_isotopes, file_out, indent=4)
 
-print(f'The file "{file_name}" was successfully created!')
+print(f'The file "{file_path}" was successfully created!')

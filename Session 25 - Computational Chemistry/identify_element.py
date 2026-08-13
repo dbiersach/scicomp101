@@ -18,7 +18,8 @@ def fit_linear(x, y):
 def main():
     # Load data
     file_name = "gas.csv"
-    data = np.genfromtxt(file_name, delimiter=",")
+    file_path = Path(__file__).parent / file_name
+    data = np.genfromtxt(file_path, delimiter=",")
 
     temperature = data[:, 0] + 273.15  # 1st column to kelvin
     volume = data[:, 1] / 1000  # 2nd column to meters cubed
