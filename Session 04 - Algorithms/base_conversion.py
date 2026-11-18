@@ -23,11 +23,16 @@ def binary_to_decimal(b):
     return sum
 
 
-def decimal_to_binary(d):
+def decimal_to_binary(d: int) -> str:
+    """Convert a nonnegative integer to binary."""
+    if d < 0:
+        raise ValueError("Expected a nonnegative integer")
+    if d == 0:
+        return "0"
     b = ""
     while d > 0:
         b += str(d % 2)
-        d = int(d / 2)
+        d //= 2
     # Reverse string 'b' because the
     # LSB must be in first position
     b = b[::-1]

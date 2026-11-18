@@ -55,7 +55,7 @@ def main():
     plt.plot(
         act_x, act_y, color="green", label=r"$\frac{1}{\sqrt{2\pi}}e^{\frac{-x^2}{2}}$"
     )
-    plt.title("Standard Normal CDF")
+    plt.title("Standard Normal PDF")
     plt.axhline(0, color="gray")
     plt.axvline(0, color="gray")
     plt.xlim(-4.0, 4.0)

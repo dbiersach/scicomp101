@@ -7,8 +7,8 @@ MAX_TERMS = 20
 
 
 def normalize_cf(cf):
-    while len(cf) > 2 and cf[-1] == 1 and cf[-2] != 1:
-        cf[int(-2)] += 1
+    if len(cf) > 1 and cf[-1] == 1:
+        cf[-2] += 1
         cf.pop(-1)
     return cf
 
@@ -16,12 +16,13 @@ def normalize_cf(cf):
 def encode_cf(x):
     cf: list[int] = []
     while len(cf) < MAX_TERMS:
-        cf.append(int(x))
-        x = x - int(x)
-        if x < 1e-11:
-            break
-        x = 1 / x
-    return normalize_cf(cf)
+        term = math.floor(x)
+        cf.append(term)
+        remainder = x - term
+        if remainder < 1e-11:
+            return normalize_cf(cf)
+        x = 1 / remainder
+    return cf
 
 
 def decode_cf(cf):

@@ -15,7 +15,7 @@ max_size = 80
 def shared_birthdays(class_size):
     """Returns True/False if two students share a birthday"""
     b = np.random.randint(0, 365, class_size)
-    for i in range(b.size - 2):
+    for i in range(b.size - 1):
         for j in range(i + 1, b.size):
             if b[i] == b[j]:
                 return True
@@ -35,6 +35,16 @@ def calc_probabilities():
     return p
 
 
+def exact_probabilities(largest_class: int) -> np.ndarray:
+    """Return exact-model probabilities for equally likely, independent birthdays."""
+    probabilities = np.zeros(largest_class + 1)
+    no_collision = 1.0
+    for size in range(1, largest_class + 1):
+        no_collision *= max(0, 366 - size) / 365
+        probabilities[size] = 1.0 - no_collision
+    return probabilities
+
+
 def main():
     # Estimated probabilities of shared birthdays per class size
     prob = calc_probabilities()
@@ -42,12 +52,12 @@ def main():
     min_class_size = np.where(prob > 0.50)[0][0]
 
     # Actual probabilities of shared birthdays per class size
-    x = np.linspace(0, 80, 500)
-    y = 1.0 - np.exp(-(x**2) / 730)
+    x = np.arange(max_size + 1)
+    y = exact_probabilities(max_size)
 
     plt.figure(Path(__file__).name)
     plt.step(range(max_size + 1), prob, color="black", linewidth=3, label="Estimated")
-    plt.plot(x, y, color="blue", label="Actual")
+    plt.plot(x, y, color="blue", label="Exact (365 equally likely birthdays)")
     plt.title(f"Birthday Paradox ({total_classes:,} classes)")
     plt.xlabel("Class Size (Number of Students)")
     plt.ylabel("Probability of a Shared Birthday")
