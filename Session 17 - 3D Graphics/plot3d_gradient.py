@@ -16,7 +16,8 @@ def main():
     xf, yf = np.meshgrid(coords, coords)  # fine grid
     xc, yc = np.meshgrid(coords[::5], coords[::5])  # coarse grid
     zf, zc = f(xf, yf), f(xc, yc)
-    dy, dx = np.gradient(zc)  # gradient along coarse grid
+    spacing = xc[0, 1] - xc[0, 0]
+    dy, dx = np.gradient(zc, spacing)  # axis 0 is y; axis 1 is x
 
     plt.figure(Path(__file__).name, figsize=(8, 4))
     ax = plt.subplot(1, 2, 1)

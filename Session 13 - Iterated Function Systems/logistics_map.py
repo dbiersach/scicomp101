@@ -7,7 +7,7 @@ from simple_screen import SimpleScreen
 
 
 def plot_logistics_map(ss):
-    for sx in range(ss.screen_width):
+    for sx in range(ss.screen_width + 1):
         x = ss.world_x(sx)
         y = np.random.random()
 

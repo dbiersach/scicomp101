@@ -33,11 +33,11 @@ def plot_mandelbrot_set(ss):
 
     # ------------------------------------------------------------------
     # Build a 2-D grid of complex constants C, one per pixel.
-    # wx shape: (screen_width,)   wy shape: (screen_height,)
-    # C shape:  (screen_height, screen_width)
+    # wx shape: (screen_width + 1,)   wy shape: (screen_height + 1,)
+    # C shape:  (screen_height + 1, screen_width + 1)
     # ------------------------------------------------------------------
-    wx = np.array([ss.world_x(sx) for sx in range(ss.screen_width)])
-    wy = np.array([ss.world_y(sy) for sy in range(ss.screen_height)])
+    wx = np.array([ss.world_x(sx) for sx in range(ss.screen_width + 1)])
+    wy = np.array([ss.world_y(sy) for sy in range(ss.screen_height + 1)])
     C = wx[np.newaxis, :] + 1j * wy[:, np.newaxis]
 
     # Initialize Z to C so the first iteration computes Z = C² + C, which is
@@ -70,8 +70,8 @@ def plot_mandelbrot_set(ss):
 
     # Write all pixels into the off-screen buffer first, then flip once
     # so the display updates atomically rather than row-by-row.
-    for sy in range(ss.screen_height):
-        for sx in range(ss.screen_width):
+    for sy in range(ss.screen_height + 1):
+        for sx in range(ss.screen_width + 1):
             n = iter_count[sy, sx]
             hue = int(hue_grid[sy, sx])
             value = 0 if n == max_iter else 100
