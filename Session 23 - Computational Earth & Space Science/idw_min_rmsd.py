@@ -74,7 +74,8 @@ def calc_rmsd(p: float) -> float:
             act: float = grid_z[xi, yi]
             est: float = calc_idw_height(xi, yi, p)
             sum_errors += (act - est) ** 2
-    return float(np.sqrt(sum_errors / num_samples))
+    # Average over the grid points where errors were measured, not the samples.
+    return float(np.sqrt(sum_errors / grid_z.size))
 
 
 def plot(ax) -> None:
@@ -92,7 +93,14 @@ def plot(ax) -> None:
     ax.set_xlabel("p (Power) term")
     ax.set_ylabel("RMSD (Act vs. Est)")
 
-    ax.text(5.0, 45.0, f"best p = {best_p:.4f}", ha="left")
+    ax.text(
+        0.95,
+        0.95,
+        f"best p = {best_p:.4f}",
+        transform=ax.transAxes,
+        ha="right",
+        va="top",
+    )
 
 
 def main():
